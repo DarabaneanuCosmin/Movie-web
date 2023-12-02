@@ -1,10 +1,18 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Route, RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+export class GeneratedRoutes {
+  routes: Routes;
+  token = localStorage.getItem("token");
+  constructor(){
+    this.routes = [
+      {path:'', redirectTo: 'home', pathMatch:'full'},
+    ];
+  }
+}
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(new GeneratedRoutes().routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
